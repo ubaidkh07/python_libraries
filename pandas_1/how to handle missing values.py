@@ -7,11 +7,20 @@ print(df.isna().sum())
 #print(df)
 #df.fillna(130,inplace=True)
 #print(df)
-print(df)
+#print(df)
 
-df['Calories'].fillna(250,inplace=True)
+'''df['Calories'].fillna(250,inplace=True)
 print(df)
 df['Date'].fillna('2020/12/22',inplace=True)
 print(df)
 x=df['Calories'].mode()[0]
-print(x)
+print(x)'''
+#df.dropna(subset=['Calories','Date'],inplace=True)
+#print(df)
+
+#find missing values then fill mean value
+y=df['Calories'].mean()
+for x in df.index:
+    if df.loc[x,'Calories']>400:
+        df.loc[x,'Calories']=y
+print(df)
